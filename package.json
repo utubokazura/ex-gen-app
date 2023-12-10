@@ -1,0 +1,33 @@
+{
+  "name": "ex-gen-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@fullcalendar/core": "^6.1.9",
+    "@fullcalendar/daygrid": "^6.1.9",
+    "@fullcalendar/interaction": "^6.1.9",
+    "@fullcalendar/react": "^6.1.9",
+    "@fullcalendar/timegrid": "^6.1.9",
+    "@prisma/client": "^5.5.2",
+    "cookie-parser": "~1.4.6",
+    "debug": "~4.3.4",
+    "ejs": "~3.1.9",
+    "express": "~4.18.2",
+    "express-session": "^1.17.3",
+    "fullcalendar": "^6.1.9",
+    "google-auth-library": "^9.2.0",
+    "googleapis": "^128.0.0",
+    "http-errors": "~2.0.0",
+    "morgan": "~1.10.0",
+    "sqlite3": "^5.1.6",
+    "xml2js": "^0.6.2"
+  },
+  "main": "app.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
