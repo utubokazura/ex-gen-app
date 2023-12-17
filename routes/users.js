@@ -11,7 +11,7 @@ module.exports = router;
 router.get('/login', (req, res, next) => {
   var data = {
     title: 'Users/Login',
-    content:'名前とパスワードを入力してください。'
+    content:'名前とパスワードを入力してください。' 
   }
   res.render('users/login', data);
 });
