@@ -16,7 +16,7 @@ router.get('/login', (req, res, next) => {
   res.render('users/login', data);
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/login', (req, res, next) => { 
   prisma.User.findMany({
     where:{
       name:req.body.name,
