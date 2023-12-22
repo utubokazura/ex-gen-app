@@ -54,7 +54,7 @@ router.post('/add',(req, res, next)=> {
         name: req.body.name,
         pass: req.body.pass,
         mail: req.body.mail,
-        age: +0
+        //age: +0
     }
   })
   .then(()=> {
