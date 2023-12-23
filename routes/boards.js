@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const ps = require('@prisma/client');
-const { route } = require('./users');
+//const { route } = require('./users');
 const prisma = new ps.PrismaClient();
 
 const pnum = 20;
