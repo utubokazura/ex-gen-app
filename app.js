@@ -1,7 +1,7 @@
 var helloRouter = require('./routes/hello');
 
 var boardsRouter = require('./routes/boards');
-
+const helmet = require('helmet');
 
 var createError = require('http-errors');
 var express = require('express');
@@ -36,7 +36,8 @@ app.use('/boards', boardsRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/hello', helloRouter);
-
+app.use(helmet());
+app.disable('x-powered-by')
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
