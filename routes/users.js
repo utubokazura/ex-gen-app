@@ -45,7 +45,7 @@ router.get('/add',(req, res, next)=> {
   const data = {
     title:'Users/Add'
   }
-  res.render('users/Add', data);
+  res.render('users/add', data);
 });
 
 router.post('/add',(req, res, next)=> {
