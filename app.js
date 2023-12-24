@@ -27,7 +27,7 @@ app.use(session(session_opt));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //app.set('views', __dirname + '/views'); //12月１７日午後４時４４分に修正
-app.set("views", appRoot.resolve("ex-gen-app/views"));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
