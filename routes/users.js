@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-
 const ps = require('@prisma/client');
 const { route } = require('./users');
 const prisma = new ps.PrismaClient();
+const appRoot = require('app-root-path');
 module.exports = router;
 
 
