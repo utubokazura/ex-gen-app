@@ -12,7 +12,9 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const session = require('express-session');
+
 var app = express(); 
+
 
 var session_opt = {
   secret: 'keybord cat',
@@ -21,7 +23,6 @@ var session_opt = {
   cookie: { maxAge: 60 * 60 * 1000 }
 };
 app.use(session(session_opt));
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
