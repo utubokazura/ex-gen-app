@@ -74,16 +74,14 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users'); 
 
 var app = express();
-/*
+
 // Redisの接続情報を設定します。必要に応じて変更してください。
 var redisClient = redis.createClient({
   host: "localhost",
   port: 6379,
   // Redisにパスワードが設定されている場合は追加
   //password: 'YourStrongPasswordHere'
-});*/
-
-var redisClient = redis.createClient(process.env.REDIS_URL);
+});
 
 // エラーが発生した場合の処理を追加します
 redisClient.on("error", function (err) {
