@@ -159,14 +159,7 @@ var redisClient = redis.createClient({
 });
 */
 
-//const client = redis.createClient({url: process.env.REDIS_URL});
-
-const client = redis.createClient({
-  url: process.env.REDIS_URL,
-  tls: {
-    rejectUnauthorized: false
-  }
-});
+const client = redis.createClient({url: process.env.REDIS_URL});
 
 // エラーが発生した場合の処理を追加します
 client.on("error", function (err) {
