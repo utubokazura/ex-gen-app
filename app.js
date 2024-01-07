@@ -156,7 +156,7 @@ var redisClient = redis.createClient({
   port: 6379,
   // Redisにパスワードが設定されている場合は追加
   //password: 'YourStrongPasswordHere'
-});
+}); 
 */
 
 const client = redis.createClient({url: process.env.REDIS_URL});
