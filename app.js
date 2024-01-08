@@ -150,16 +150,16 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 // Redisの接続情報を設定します。必要に応じて変更してください。
-/*
-var redisClient = redis.createClient({
+
+var client = redis.createClient({
   host: "localhost",
   port: 6379,
   // Redisにパスワードが設定されている場合は追加
   //password: 'YourStrongPasswordHere'
 }); 
-*/
 
-const client = redis.createClient({url: process.env.REDIS_URL});
+
+//const client = redis.createClient({url: process.env.REDIS_URL});
 
 // エラーが発生した場合の処理を追加します
 client.on("error", function (err) {
