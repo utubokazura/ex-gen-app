@@ -145,7 +145,7 @@ const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 const redis = require('redis');
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users'); 
+var usersRouter = require('./routes/users');  
 
 var app = express();
 
