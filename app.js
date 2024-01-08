@@ -144,6 +144,7 @@ var logger = require('morgan');
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 const redis = require('redis');
+const client = redis.createClient({ url: 'redis://:paf716cf1f4efe654f6af61c7dd8e37d21ed8e292b2a4863230a993dbb77800d4@ec2-35-174-32-196.compute-1.amazonaws.com:12409' });
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');  
 
@@ -160,7 +161,7 @@ var client = redis.createClient({
 */
 
 //const client = redis.createClient({url: process.env.REDIS_URL});
-const client = redis.createClient({ url: 'redis://:paf716cf1f4efe654f6af61c7dd8e37d21ed8e292b2a4863230a993dbb77800d4@ec2-35-174-32-196.compute-1.amazonaws.com:12409' });
+//const client = redis.createClient({ url: 'redis://:paf716cf1f4efe654f6af61c7dd8e37d21ed8e292b2a4863230a993dbb77800d4@ec2-35-174-32-196.compute-1.amazonaws.com:12409' });
 
 
 // エラーが発生した場合の処理を追加します
