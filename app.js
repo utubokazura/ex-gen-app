@@ -154,7 +154,7 @@ var app = express();
 var client = redis.createClient({
   host: "localhost",
   port: 6379,
-  // Redisにパスワードが設定されている場合は追加
+  // Redisにパスワードが設定されている場合は追加 
   //password: 'YourStrongPasswordHere'
 }); 
 */
