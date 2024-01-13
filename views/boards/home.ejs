@@ -14,18 +14,18 @@
 
     <header>
         <h1 class="display-4">
-            <%= title %>
+           
         </h1>
     </header>
     <div role="main">
-        <p class="h4"><%= userName %>'s messages.</p>
+        <h1><%= userName %>さんの送信履歴</h1>
         <table class="table mt-5">
             <% for(let i in content) { %>
             <%- include('data_item', {val:content[i]}) %>
         <% } %>
         </table>
 
-        <ul class="pagination justify-content-center">
+<!--        <ul class="pagination justify-content-center">
             <li class="page-item">
             <a href="/boards/home/<%=userName %>/<%=accountId %>/
                 <%= page - 1 %>"
@@ -40,6 +40,6 @@
     </div>
     <div class="text-left">
         <a href="/boards">&lt;&lt; Top.</a>
-    </div>
+    </div> -->
 </body>
 </html>

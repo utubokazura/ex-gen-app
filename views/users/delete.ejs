@@ -19,21 +19,21 @@
     <div role="main">
         <table class="table">
             <tr>
-                <th>NAME</th>
+                <th>名前</th>
                 <td><%= user.name %></td>
             </tr>
-            <tr>
-                <th>PASSWORD</th>
+      <!--  <tr>
+                <th>パスワード</th>
                 <td><%= user.pass %></td>
-            </tr>
+            </tr>-->
             <tr>
-                <th>AGE</th>
+                <th>メールアドレス</th>
                 <td><%= user.mail %></td>
             </tr>
-            <tr>
+      <!--  <tr>
                 <th>AGE</th>
                 <td><%= user.age %></td>
-            </tr>
+            </tr> -->
         </table>
         <form method="post" action="/users/delete">
             <input type="hidden" name="id"

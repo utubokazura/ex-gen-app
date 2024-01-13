@@ -27,6 +27,27 @@
         </h1>
     </header>
     <div role="main">
+
+        <style>
+            .table {
+              display: grid;
+              grid-template-columns: auto auto auto auto; /* カラムの数に応じて調整 */
+              border-collapse: collapse;
+              width: 100%;
+            }
+          
+            .table th,
+            .table td {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+          
+            .table th {
+              background-color: #f2f2f2;
+            }
+          </style>
+
         <table class="table">
             <% for(var obj of content) { %>
             <tr>

@@ -93,7 +93,28 @@ router.get('/', (req, res, next)=> {
         res.render('users/calender', data);
       });
 
-  
+   //delete.ejsの処理
+   router.get('/delete/:id',(req, res, next)=> {
+    const id = req.params.id;
+    prisma.user.findUnique(
+      { where:{ id:+id }}
+    ).then(usr=>{
+      const data =  {
+        title:'アカウント削除画面',
+        user:usr
+      };
+      res.render('users/delete', data);
+    });
+  });
+
+router.post('/delete',(req, res, next)=> {
+  prisma.User.delete({
+    where:{id:+req.body.id}
+  }).then(()=> {
+    res.redirect('/users/login');
+  });
+});
+      
    
  
 

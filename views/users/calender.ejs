@@ -23,7 +23,19 @@
         let resultArea = document.getElementById('resultArea');
         let items = response.result.items;
         for(let i = 0; i < items.length; i++){
-          resultArea.insertAdjacentHTML('beforeend', items[i].summary + items[i].start.date + '<br>');
+          const startDateTime = items[i].start.dateTime;
+          const startDate = items[i].start.date;
+          const endDateTime = items[i].end.dateTime;
+          const endDate = items[i].end.date;
+
+          const start = startDateTime || startDate;
+          const end = endDateTime || endDate;
+
+          // 日時をUTCから3時間遅れた日本時間に変換
+          const formattedStart = new Date(start).toLocaleString('ja-JP', {timeZone: 'Asia/Tokyo'});
+          const formattedEnd = new Date(end).toLocaleString('ja-JP', {timeZone: 'Asia/Tokyo'});
+
+          resultArea.insertAdjacentHTML('beforeend', `${formattedStart} 〜 ${formattedEnd} - ${items[i].summary}<br>`);
         }
       }, function(reason) {
         console.log('Error: ' + reason.result.error.message);
