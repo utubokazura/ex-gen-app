@@ -47,7 +47,7 @@ router.get('/add',(req, res, next)=> {
   res.render('users/add', data);
 });
 /*
-router.post('/add',(req, res, next)=> {
+router.post('/add',(req, res, next)=> { 
   prisma.User.create({
     data:{
         name: req.body.name,
