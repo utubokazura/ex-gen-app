@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = env("file:/path/to/your/database/mydb.db")
+  url      = env("DATABASE_URL")
 
 }
 
