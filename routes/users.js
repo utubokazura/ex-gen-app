@@ -46,7 +46,7 @@ router.get('/add',(req, res, next)=> {
   }
   res.render('users/add', data);
 });
-
+/*
 router.post('/add',(req, res, next)=> {
   prisma.User.create({
     data:{
@@ -60,6 +60,26 @@ router.post('/add',(req, res, next)=> {
     res.redirect('/users/login');
   });
 });
+*/
+
+router.post('/add', (req, res, next) => {
+  prisma.User.create({
+    data: {
+      name: req.body.name,
+      pass: req.body.pass,
+      mail: req.body.mail,
+      //age: +0
+    }
+  })
+  .then(() => {
+    res.redirect('/users/login');
+  })
+  .catch((error) => {
+    console.error("Error creating user:", error);
+    res.status(500).send("Internal Server Error");
+  });
+});
+
 
 router.get('/', (req, res, next)=> {
   const id = +req.query.id;
