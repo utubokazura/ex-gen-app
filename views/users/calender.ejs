@@ -20,44 +20,55 @@
     </style>
   </head>
   <body>
-    <div id='resultArea'></div> 
+    <table id='resultTable'>
+      <thead>
+        <tr>
+          <th>日時</th>
+          <th>タイトル</th>
+        </tr>
+      </thead>
+      <tbody id='resultBody'></tbody>
+    </table>
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+      let url = window.location;
+      const searchParams = new URLSearchParams(url.search);
+      const API_KEY = 'AIzaSyDKstIGjpen0WIx3JxyZ_uAaKM6LyskGPE';
+      const CALENDAR_ID =  searchParams.get("mail");
+
+      function start() {
+        gapi.client.init({
+          'apiKey': API_KEY,
+        }).then(function() {
+          return gapi.client.request({
+            'path': 'https://www.googleapis.com/calendar/v3/calendars/' + encodeURIComponent(CALENDAR_ID) + '/events'
+          });
+        }).then(function(response) {
+          let resultBody = document.getElementById('resultBody');
+          let items = response.result.items;
+          for(let i = 0; i < items.length; i++) {
+            const startDateTime = items[i].start.dateTime;
+            const startDate = items[i].start.date;
+            const endDateTime = items[i].end.dateTime;
+            const endDate = items[i].end.date;
+
+            const start = startDateTime || startDate;
+            const end = endDateTime || endDate;
+
+            // 日時をUTCから3時間遅れた日本時間に変換
+            const formattedStart = new Date(start).toLocaleString('ja-JP', {timeZone: 'Asia/Tokyo'});
+            const formattedEnd = new Date(end).toLocaleString('ja-JP', {timeZone: 'Asia/Tokyo'});
+
+            // テーブルに行を追加
+            resultBody.insertAdjacentHTML('beforeend', `<tr><td>${formattedStart} 〜 ${formattedEnd}</td><td>${items[i].summary}</td></tr>`);
+          }
+        }, function(reason) {
+          console.log('Error: ' + reason.result.error.message);
+        });
+      }
+
+      gapi.load('client', start);
+    </script>
   </body>
-  <script src="https://apis.google.com/js/api.js"></script> 
-  <script>
-    let url = window.location;
-    const searchParams = new URLSearchParams(url.search);
-    const API_KEY = 'AIzaSyDKstIGjpen0WIx3JxyZ_uAaKM6LyskGPE'
-    const CALENDAR_ID =  searchParams.get("mail");
-    function start() {
-      gapi.client.init({
-        'apiKey': API_KEY,
-      }).then(function() {
-        return gapi.client.request({
-          'path': 'https://www.googleapis.com/calendar/v3/calendars/' + encodeURIComponent(CALENDAR_ID) + '/events'
-        })
-      }).then(function(response) {
-        let resultArea = document.getElementById('resultArea');
-        let items = response.result.items;
-        for(let i = 0; i < items.length; i++){
-          const startDateTime = items[i].start.dateTime;
-          const startDate = items[i].start.date;
-          const endDateTime = items[i].end.dateTime;
-          const endDate = items[i].end.date;
-
-          const start = startDateTime || startDate;
-          const end = endDateTime || endDate;
-
-          // 日時をUTCから3時間遅れた日本時間に変換
-          const formattedStart = new Date(start).toLocaleString('ja-JP', {timeZone: 'Asia/Tokyo'});
-          const formattedEnd = new Date(end).toLocaleString('ja-JP', {timeZone: 'Asia/Tokyo'});
-
-          resultArea.insertAdjacentHTML('beforeend', `${formattedStart} 〜 ${formattedEnd} - ${items[i].summary}<br>`);
-        }
-      }, function(reason) {
-        console.log('Error: ' + reason.result.error.message);
-      });
-    };
-
-    gapi.load('client', start);
-  </script>
 </html>
